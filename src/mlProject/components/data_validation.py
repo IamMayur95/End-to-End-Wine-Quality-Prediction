@@ -14,6 +14,7 @@ class DataValiadtion:
 
             data = pd.read_csv(self.config.unzip_data_dir)
             data.drop(columns=["Id"],inplace=True)
+            data.to_csv(self.config.unzip_data_dir , index=False)  # Save to the same file to avoid data loss
             all_cols = list(data.columns)
 
             all_schema = self.config.all_schema.keys()
