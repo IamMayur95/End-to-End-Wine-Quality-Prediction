@@ -11,8 +11,9 @@ class DataTransformationPipeline:
 
     def main(self):
         try:
-            with open(Path("artifacts\data_validation\status.txt" , 'r')) as file:
-                data_validation_status = file.read().split(" ")[-1]
+            with open(Path("artifacts\data_validation\status.txt"),'r') as file:
+                data_validation_status = file.read().split(":")[-1].strip()
+                logger.info(f"Data_Validation_Status = {data_validation_status}")
 
             if data_validation_status == "True":
                 config = ConfigurationManager()

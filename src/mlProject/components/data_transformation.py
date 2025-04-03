@@ -22,8 +22,9 @@ class DataTransformation:
         # Split the data into training and test sets. (0.75, 0.25) split.
         train, test = train_test_split(data)
 
-        if not os.path.exists(Path(self.config.root_dir)):
-            os.makedirs(Path(self.config.root_dir))
+        if not os.path.exists(self.config.root_dir):
+            os.makedirs(self.config.root_dir)
+            logger.info(f"Created Data Transformation directory: {self.config.root_dir}")
 
         train.to_csv(os.path.join(self.config.root_dir, "train.csv"),index = False)
         test.to_csv(os.path.join(self.config.root_dir, "test.csv"),index = False)

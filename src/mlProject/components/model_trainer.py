@@ -24,7 +24,7 @@ class ModelTrainer:
         lr = ElasticNet(alpha=self.config.alpha, l1_ratio=self.config.l1_ratio, random_state=42)
         lr.fit(train_x, train_y)
 
-        if not os.path.exists(Path(self.config.root_dir)):
-            os.makedirs(Path(self.config.root_dir))
+        if not os.path.exists(self.config.root_dir):
+            os.makedirs(self.config.root_dir)
 
         joblib.dump(lr, os.path.join(self.config.root_dir, self.config.model_name))
